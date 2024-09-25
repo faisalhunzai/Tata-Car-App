@@ -1,0 +1,22 @@
+[
+    {
+           "id": "1",
+      "text": "Small: Medium: Utilitaria: VW Golf, 500L, Audi A3, Classe A e B Mercedes, etc."
+   
+    },
+    {
+        "id": "2",
+      "text": "Large: Station wagon-coupe e cross-over: BMW Serie 3-5, Audi A6-Q3, Alfa Giulia, Mercedes C-E, etc."
+    },
+    {
+         "value": "3",
+      "text": "SUV: SUV: Alfa Stelvio, BMW X5, Audi Q8, Porsche Macan, Mercedes GLE, Range Rover Sport, etc."
+     
+    },
+    {
+         "id": "4",
+      "text": "Premium: Supercar SUV e coupe: Porsche Cayenne-911, Range Rover Vogue, Maserati Levante-Ghibli, etc."
+     
+    }
+  ]
+  
