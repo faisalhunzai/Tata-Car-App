@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "506844250507",
+    "project_id": "faisal-nazeem",
+    "storage_bucket": "faisal-nazeem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506844250507:android:2bdc23ee5c82f8086daf8e",
+        "android_client_info": {
+          "package_name": "com.carwashapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506844250507-71lituq4mkj0p76shf1mmquhdfflplf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvEi4C4bGl7Ygj93AnViE4JD177QivtuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506844250507-71lituq4mkj0p76shf1mmquhdfflplf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506844250507:android:972a52c979e28c536daf8e",
+        "android_client_info": {
+          "package_name": "com.pakge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506844250507-71lituq4mkj0p76shf1mmquhdfflplf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvEi4C4bGl7Ygj93AnViE4JD177QivtuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506844250507-71lituq4mkj0p76shf1mmquhdfflplf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
