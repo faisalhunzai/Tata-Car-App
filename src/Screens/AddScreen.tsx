@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import {ScrollView} from 'react-native-actions-sheet';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../components/Colors';
-
+//write proper name for screens in a way that reflects their purpose or functionality.
 const AddScreen: React.FC = () => {
   const [isChecked1, setIsChecked1] = useState<boolean>(false);
   const [isChecked2, setIsChecked2] = useState<boolean>(false);
