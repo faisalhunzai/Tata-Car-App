@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import CustomCheckBox from '../components/checkbox'
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
-
+ //screen name ?
 const AddScreens = () => {
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const handleCheckboxChange = (value: boolean) => {
