@@ -1,0 +1,21 @@
+[
+    {
+        "id" :"1",
+      "backgroundImage": "https://images.pexels.com/photos/4173088/pexels-photo-4173088.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Noi siamo waterless",
+      "paragraph": "Nei nostri lavaggi usiamo prodotti che non richiedono l’utilizzo d’acqua, abbattendo così lo spreco."
+    },
+    {
+        "image" :"2",
+      "backgroundImage": "https://images.pexels.com/photos/5229639/pexels-photo-5229639.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Il nostro Impegno per il pianeta",
+      "paragraph": "Con il nostro servizio a domicilio ed i nostri mezzi elettrici, abbattiamo l’emissione di CO2."
+    },
+    {
+        "image" :"3",
+      "backgroundImage": "https://images.pexels.com/photos/5628247/pexels-photo-5628247.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Condividi con i tuoi amici",
+      "paragraph": "Condividi con i tuoi amici il servizio TATA, per te subito un regalo nel tuo prossimo lavaggio"
+    }
+  ]
+  
