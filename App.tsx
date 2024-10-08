@@ -6,11 +6,11 @@ import BottomTab from './src/components/BottomTab';
 import 'react-native-gesture-handler';
 import { SheetProvider } from 'react-native-actions-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler'; 
-import loction from './src/Screens/LoctionScreen';
-import AddScreen from './src/Screens/AddScreen';
-import AddScreens from './src/Screens/AddScreens';
-import PopupScreen from './src/Screens/PopupScreen';
-import Popups from './src/Screens/Popups';
+import mapScreen from './src/Screens/mapScreen';
+import CarAddScreen from './src/Screens/CarAddScreen';
+import riesterScreen from './src/Screens/riesterSrceen';
+import BookingTimeScreen from './src/Screens/BookingTimeScreen';
+import BookingReviewScreen from './src/Screens/BookingReviewScreen';
 import StatusScreen from './src/Screens/StatusScreen';
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +20,7 @@ const App = () => {
     <GestureHandlerRootView> 
       <SheetProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home">
+          <Stack.Navigator initialRouteName="LoginScreen">
             <Stack.Screen
               name="LoginScreen"
               component={LoginScreen}
@@ -37,28 +37,28 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="loction"
-              component={loction}
+              name="mapScreen"
+              component={mapScreen}
               options={{ headerShown: false }}
             />
                 <Stack.Screen
-              name="AddScreen"
-              component={AddScreen}
+              name="CarAddScreen"
+              component={CarAddScreen}
               options={{ headerShown: false }}
             />
              <Stack.Screen
-              name="AddScreens"
-              component={AddScreens}
+              name="riesterScreen"
+              component={riesterScreen}
               options={{ headerShown: false }}
             />
               <Stack.Screen
               name="PopupScreen"
-              component={PopupScreen}
+              component={BookingTimeScreen}
               options={{ headerShown: false }}
             />
               <Stack.Screen
-              name="Popups"
-              component={Popups}
+              name="BookingReviewScreen"
+              component={BookingReviewScreen}
               options={{ headerShown: false }}
             />
                <Stack.Screen
@@ -66,7 +66,6 @@ const App = () => {
               component={StatusScreen}
               options={{ headerShown: false }}
             />
-           
           </Stack.Navigator>
         </NavigationContainer>
       </SheetProvider>

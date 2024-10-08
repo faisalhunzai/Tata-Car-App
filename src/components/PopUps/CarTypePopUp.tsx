@@ -1,14 +1,15 @@
 import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import Colors from '../Colors';
-import CustomDropdown, { DropdownItem } from '../DorpDwon';
+import CustomDropdown, { DropdownItem } from '../DorpDown';
 import CarsData from '../../Utilites/jsons/Carsdata.json';
-import { ReactNode } from 'react';
+
 
 const {height} = Dimensions.get("screen")
 
 interface  Props {
     onOuterPress:()=>void
     onValueSelect:(values:DropdownItem)=>void
+    
 }
 
 
@@ -21,12 +22,10 @@ export const CarTypePopup:React.FC<Props> = ({onOuterPress,onValueSelect}) => {
         <Text style={styles.textCard}>Scegli la categoria auto</Text>
 
         {CarsData.map(item => {
-          //  const boldText = item.text.split(":")[0];
-          //  const text = item.text.slice(boldText.length + 1);
 
           return (
             <View key={item.id}>
-              {/* <Text style={styles.boldText}>{boldText}:</Text> */}
+             
               <Text style={styles.carText}>{item.text}</Text>
             </View>
           );

@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native-actions-sheet';
 import Button from '../components/Button';
 import {Icon} from '../components/Icon';
 import {useNavigation} from '@react-navigation/native';
+import Colors from '../components/Colors';
 
 const servicesList = [
   'Pulizia sedii',
@@ -129,12 +130,7 @@ const Popups = () => {
 
         <View>
           <Text
-            style={{
-              fontSize: 12,
-              fontWeight: '600',
-              color: '#000000',
-              marginLeft: 20,
-            }}>
+            style={styles.ManciaText}>
             Mancia cleaner
           </Text>
 
@@ -142,29 +138,17 @@ const Popups = () => {
             <Button
               title="2€"
               onpress={() => {}}
-              buttonStyle={{
-                backgroundColor: '#D9D9D9',
-                width: 100,
-                height: 40,
-              }}
+              buttonStyle={styles.button}
             />
             <Button
               title="2€"
               onpress={() => {}}
-              buttonStyle={{
-                backgroundColor: '#D9D9D9',
-                width: 100,
-                height: 40,
-              }}
+              buttonStyle={styles.button}
             />
             <Button
               title="2€"
               onpress={() => {}}
-              buttonStyle={{
-                backgroundColor: '#D9D9D9',
-                width: 100,
-                height: 40,
-              }}
+              buttonStyle={styles.button}
             />
           </View>
         </View>
@@ -209,14 +193,25 @@ const styles = StyleSheet.create({
   tataText: {
     fontSize: 50,
     fontWeight: '900',
-    color: 'white',
+    color: Colors.color,
     padding: 30,
   },
   paraText: {
     fontSize: 16,
     fontWeight: '600',
-    color: 'white',
+    color: Colors.color,
     marginTop: 20,
+  },
+  ManciaText:{
+    fontSize: 12,
+    fontWeight: '600',
+    color: Colors.blackColor,
+    marginLeft: 20,
+  },
+  button:{
+    backgroundColor: Colors.CoolGray,
+    width: 100,
+    height: 40,
   },
   centeredView: {
     alignItems: 'center',
@@ -225,27 +220,27 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 20,
-    color: '#1D202B',
+    color: Colors.CharcoalBlue,
     padding: 25,
   },
   text: {
     fontSize: 16,
     fontWeight: '500',
     lineHeight: 24,
-    color: '#1D202B',
+    color: Colors.CharcoalBlue,
   },
   para: {
     fontSize: 12,
     fontWeight: '300',
-    color: '#333333',
+    color: Colors.jetBlack,
     marginTop: 10,
   },
   carCard: {
-    backgroundColor: '#EAE4DD',
+    backgroundColor: Colors.Bone,
     borderRadius: 40,
   },
   infoBox: {
-    backgroundColor: '#EEEDEB',
+    backgroundColor: Colors.Alabaster,
     margin: 10,
     padding: 20,
   },
@@ -259,31 +254,31 @@ const styles = StyleSheet.create({
   boldText: {
     fontSize: 14,
     fontWeight: '600',
-    color: 'black',
+    color: Colors.blackColor,
   },
   normalText: {
     fontSize: 14,
     fontWeight: '400',
-    color: 'black',
+    color: Colors.blackColor,
   },
   line: {
     height: 1.4,
     width: '100%',
-    backgroundColor: 'black',
+    backgroundColor: Colors.blackColor,
     marginVertical: 10,
     marginTop: 10,
   },
   line2: {
     height: 1.4,
     width: '100%',
-    backgroundColor: 'black',
+    backgroundColor: Colors.blackColor,
     marginVertical: 10,
   },
   dot: {
     height: 10,
     width: 10,
     borderRadius: 5,
-    backgroundColor: 'black',
+    backgroundColor: Colors.blackColor,
   },
   serviceRow: {
     flexDirection: 'row',

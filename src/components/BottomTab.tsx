@@ -18,26 +18,10 @@ const BottomTab = () => {
           let iconComponent;
 
           switch (route.name) { 
-            case 'H':
+            case 'Home':
               iconName = 'home';
               break;
-            case 'S':
-              iconName = 'search1';
-              break;
-            case 'C':
-              iconName = 'plus';
-              iconComponent = (
-                <View style={[styles.iconContainer, { backgroundColor: 'rgb(255, 39, 107)' }]}>
-                  <Icon.AntDesign name={iconName} size={29} color="#FFFFFF" />
-                </View>
-              );
-              break;
-            case 'M':
-              iconName = 'message1';
-              break;
-            case 'P':
-              iconName = 'adduser';
-              break;
+            
             default:
               break;
           }
@@ -51,7 +35,7 @@ const BottomTab = () => {
                   flexDirection: 'row',
                   
                   borderRadius: 5,
-                }}
+                } }
               >
                 <Icon.AntDesign name={iconName} size={29} color={color} />
                 {focused ? <Text>{route.name}</Text> : null}

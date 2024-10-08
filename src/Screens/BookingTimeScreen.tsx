@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-actions-sheet';
 import moment from 'moment';
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import Colors from '../components/Colors';
 
 const PopupScreen = () => {
   const navigation =useNavigation();
@@ -91,12 +92,8 @@ const PopupScreen = () => {
             <View>
               <Button
                 title="Conferma"
-                onpress={() => navigation.navigate('Popups')}
-                buttonStyle={{
-                  padding: 18,
-                  borderRadius: 10,
-                  marginTop :10
-                }}
+                onpress={() => navigation.navigate('BookingReviewScreen')}
+                buttonStyle={styles.confermaButton}
               />
             </View>
           </View>
@@ -119,20 +116,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   box: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 30,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
   },
+  confermaButton:{
+    padding: 18,
+    borderRadius: 10,
+    marginTop :10
+  },
   card: {
-    backgroundColor: '#303030',
+    backgroundColor: Colors.DarkCharcoal,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
   },
   titleText: {
     fontWeight: '600',
     fontSize: 18,
-    color: '#FFFFFF',
+    color: Colors.color,
     padding: 15,
   },
   carImage: {
@@ -142,23 +144,23 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 10,
     fontWeight: '500',
-    color: '#333333',
+    color: Colors.jetBlack,
     marginTop: 20,
   },
   weeks: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.color,
     borderWidth: 2,
     padding: 10,
-    borderColor: '#EEEDEB',
-    color: 'black',
+    borderColor: Colors.Alabaster,
+    color: Colors.blackColor,
     borderRadius: 10,
   },
   time: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.color,
     borderWidth: 2,
     padding: 10,
-    borderColor: '#EEEDEB',
-    color: 'black',
+    borderColor: Colors.Alabaster,
+    color: Colors.blackColor,
     borderRadius: 10,
   },
   weekContainer: {
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   selectedText: {
-    color: 'white', 
-    backgroundColor: 'black',
+    color: Colors.color, 
+    backgroundColor: Colors.blackColor,
   },
 });

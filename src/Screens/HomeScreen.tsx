@@ -18,12 +18,11 @@ import backgroundImage from '../Utilites/jsons/BackgroundImage.json';
 import cardData from '../Utilites/jsons/CardData.json';
 import ActionSheet, {FlatList, SheetManager} from 'react-native-actions-sheet';
 import {ListRenderItem} from 'react-native';
-import {Icon} from '../components/Icon';
-import CustomDropdown, { DropdownItem } from '../components/DorpDwon';
+import CustomDropdown, {DropdownItem} from '../components/DorpDown';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../components/Colors';
-import metroConfig from '../../metro.config';
 import {CarTypePopup} from '../components/PopUps/CarTypePopUp';
+
 
 interface CardItem {
   id: string;
@@ -54,11 +53,8 @@ const HomeScreen: React.FC = () => {
   const [activeLine, setActiveLine] = useState<number>(0);
   const navigation = useNavigation();
   const [isCardVisible, setIsCardVisible] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
-
-  const handleValueChange = (value: string) => {
-    setSelectedValue(value);
-  };
+  const [CardVisible, setCardVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); 
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollX = event.nativeEvent.contentOffset.x;
@@ -70,8 +66,6 @@ const HomeScreen: React.FC = () => {
       setActiveLine(0);
     }
   };
-
-  
 
   const renderItem: ListRenderItem<CardItem> = ({item}) => (
     <View key={item.id} style={styles.cards}>
@@ -93,12 +87,12 @@ const HomeScreen: React.FC = () => {
         <Button
           title="Prenota"
           onpress={() => {
-            console.log("testing");
-            
+            console.log('testing');
+
             if (item.id == '3') {
               SheetManager.show('sheet');
             } else {
-              navigation.replace('LoginScreen');
+              navigation.replace('mapScreen');
             }
           }}
           buttonStyle={styles.button}
@@ -168,17 +162,17 @@ const HomeScreen: React.FC = () => {
             <Text
               style={[
                 styles.line,
-                activeLine === 0 && styles.activeLine,
+                activeLine == 0 && styles.activeLine,
               ]}></Text>
             <Text
               style={[
                 styles.line,
-                activeLine === 1 && styles.activeLine,
+                activeLine == 1 && styles.activeLine,
               ]}></Text>
             <Text
               style={[
                 styles.line,
-                activeLine === 2 && styles.activeLine,
+                activeLine == 2 && styles.activeLine,
               ]}></Text>
           </View>
 
@@ -242,67 +236,56 @@ const HomeScreen: React.FC = () => {
             </View>
           </ImageBackground>
 
-            <ActionSheet id="sheet" containerStyle={styles.component}>
+          <ActionSheet id="sheet" containerStyle={styles.component}>
+            <View>
+              <CustomDropdown
+                iconSource={require('../../Asset/Image/6.png')}
+                iconText="Marca"
+              />
+              <CustomDropdown
+                iconSource={require('../../Asset/Image/6.png')}
+                iconText="Modello"
+              />
+              <CustomDropdown
+                iconSource={require('../../Asset/Image/6.png')}
+                iconText="Targa"
+              />
               <View>
-                <CustomDropdown
-                  iconSource={require('../../Asset/Image/6.png')}
-                  iconText="Marca"
-                />
-                <CustomDropdown
-                  iconSource={require('../../Asset/Image/6.png')}
-                  iconText="Modello"
-                />
-                <CustomDropdown
-                  iconSource={require('../../Asset/Image/6.png')}
-                  iconText="Targa"
-                />
                 <View>
-                  <View>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setIsCardVisible(!isCardVisible);
-                        SheetManager.hide('sheet');
-                      }}>
-                      <CustomDropdown
-                        iconSource={require('../../Asset/Image/6.png')}
-                        iconText="Scegli La categoria"
-                      />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-                <View>
-                  <Button
-                    title="Conerma"
-                    onpress={() => {}}
-                    buttonStyle={{
-                      backgroundColor: '#1D202B',
-                      padding: 17,
-                      borderRadius: 12,
-                    }}
-                    titleStyle={{
-                      color: '#ffffff',
-                      fontSize: 14,
-                      fontWeight: '500',
-                    }}
-                  />
+                <TouchableOpacity
+          onPress={() => {
+            setIsCardVisible(!isCardVisible); 
+            SheetManager.hide('sheet')
+          }}>
+          <CustomDropdown
+            iconSource={require('../../Asset/Image/6.png')}
+            iconText={selectedCategory ? selectedCategory : "Scegli La categoria"} 
+          />
+        </TouchableOpacity>
                 </View>
               </View>
-            </ActionSheet>
+              <View>
+                <Button
+                  title="Conerma"
+                  onpress={() => {}}
+                  buttonStyle={styles.conermaButton}
+                  titleStyle={styles.conermaText}
+                />
+              </View>
+            </View>
+          </ActionSheet>
         </View>
       </ScrollView>
       {isCardVisible && (
-        <CarTypePopup
-          onOuterPress={() => {
-            setIsCardVisible(false);
-            SheetManager.show("sheet")
-          }}
-          onValueSelect={(value:DropdownItem)=>{
-            setIsCardVisible(false);
-            SheetManager.show("sheet")
-            console.log('Value selected:', value);
-          }}
-        />
-      )}  
+      <CarTypePopup
+      onOuterPress={() => setIsCardVisible(false)}
+      onValueSelect={(value: DropdownItem) => {
+        setSelectedCategory(value.label); 
+        setIsCardVisible(false);
+        SheetManager.show('sheet');
+      }}
+    />
+      )}
     </>
   );
 };
@@ -345,6 +328,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 25,
     marginBottom: 10,
+  },
+  conermaText:{
+    color: Colors.color,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  conermaButton:{
+    backgroundColor: Colors.CharcoalBlue,
+    padding: 17,
+    borderRadius: 12,
   },
   horizontalScroll: {
     paddingHorizontal: 10,
@@ -389,7 +382,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   card: {
-    backgroundColor: '#EEEDEB',
+    backgroundColor: Colors.Alabaster,
     padding: 10,
     margin: 5,
     borderRadius: 6,
@@ -413,12 +406,12 @@ const styles = StyleSheet.create({
   line: {
     width: 40,
     height: 6,
-    backgroundColor: 'white',
+    backgroundColor: Colors.color,
     margin: 10,
     borderRadius: 20,
   },
   activeLine: {
-    backgroundColor: 'black',
+    backgroundColor:  Colors.blackColor,
   },
   indicators: {
     flexDirection: 'row',
@@ -432,18 +425,18 @@ const styles = StyleSheet.create({
   iamgeTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: 'white',
+    color: Colors.color,
   },
   iamgeTitle2: {
     fontSize: 18,
     fontWeight: '700',
-    color: 'white',
+    color: Colors.color,
     marginTop: 20,
   },
   iamgepara: {
     fontSize: 14,
     fontWeight: '400',
-    color: 'white',
+    color: Colors.color,
   },
   iamgepara2: {
     fontSize: 14,
@@ -454,7 +447,7 @@ const styles = StyleSheet.create({
   backgourndTitle: {
     fontSize: 21,
     fontWeight: '700',
-    color: '#1D202B',
+    color: Colors.CharcoalBlue,
     padding: 20,
   },
   lastcard: {
@@ -500,13 +493,13 @@ const styles = StyleSheet.create({
   },
   imageButton: {
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   component: {
     padding: 20,
   },
   cardes: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: Colors.cardColor,
     padding: 20,
     marginTop: 20,
     borderRadius: 10,

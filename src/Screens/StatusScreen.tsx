@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View, FlatList } from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
+import Colors from '../components/Colors';
 
 const StatusScreen = () => {
 
@@ -38,14 +39,7 @@ const StatusScreen = () => {
       <Button
        title='Rintraccia tuo ordine'
        onpress={()=>{}}
-       buttonStyle={{
-        width :'100%',
-         padding: 18,
-         borderRadius: 8,
-         marginTop: 70, 
-         backgroundColor: '#40E064'
-
-       }}
+       buttonStyle={styles.rintracciaButton}
       />
     </View>
   );
@@ -64,21 +58,28 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
   },
+  rintracciaButton:{
+    width :'100%',
+    padding: 18,
+    borderRadius: 8,
+    marginTop: 70, 
+    backgroundColor:Colors.LimeGreen
+  },
   text: {
     fontSize: 15,
     fontWeight: '600',
     lineHeight: 20,
-    color: '#1D202B',
+    color: Colors.CharcoalBlue,
   },
   paraText: {
     fontSize: 15,
     fontWeight: '400',
-    color: '#777474',
+    color: Colors.GrayNickel,
   },
   para: {
     fontSize: 12,
     fontWeight: '400',
-    color: '#777474',
+    color: Colors.GrayNickel,
     textAlign: 'center',
     marginTop: 5,
   },
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.color,
     borderRadius: 10,
     padding: 20,
     width: '100%',
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333333',
+    color: Colors.jetBlack,
     marginBottom: 10,
     textAlign: 'center',
   },
@@ -114,11 +115,11 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#333333',
+    color: Colors.jetBlack,
   },
   value: {
     fontWeight: '400',
     fontSize: 12,
-    color: '#333333',
+    color: Colors.jetBlack,
   },
 });

@@ -4,7 +4,7 @@ import CustomCheckBox from '../components/checkbox'
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
-const AddScreens = () => {
+const CarAddScreen = () => {
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const handleCheckboxChange = (value: boolean) => {
         setIsChecked(value);
@@ -86,7 +86,7 @@ const AddScreens = () => {
     )
 }
 
-export default AddScreens
+export default CarAddScreen
 
 const styles = StyleSheet.create({
     container: {

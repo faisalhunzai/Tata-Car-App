@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, ViewStyle, FlatList, StyleProp, TextStyle } from 'react-native';
 import { Icon } from './Icon';
 
-interface DropdownItem {
+export interface DropdownItem {
   label?: string;
   value?: string;
 }
@@ -14,10 +14,10 @@ interface CustomDropdownProps {
   style?: StyleProp<ViewStyle>;
   styleText?:  StyleProp<TextStyle>;
   iconStyle?:  StyleProp<ViewStyle>;
-  onValueSelect?:  ((value?: DropdownItem) => void) | undefined
+  onValueSelect?:  ((value?: DropdownItem) => void) | undefined;
 }
 
-const CustomDropdown: React.FC<CustomDropdownProps> = ({ data = [], iconSource, iconText, style,styleText,iconStyle ,onValueSelect}) => {
+const CustomDropdown: React.FC<CustomDropdownProps> = ({ data = [], iconSource, iconText, style, styleText, iconStyle, onValueSelect }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
@@ -26,15 +26,18 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ data = [], iconSource, 
   };
 
   const selectItem = (item: DropdownItem) => {
-   item.value && setSelectedValue(item.value);
-  item &&  onValueSelect(item)
+    if (item.value) {
+      setSelectedValue(item.value);
+    }
+    if (item) {
+      onValueSelect?.(item); 
+    }
     setDropdownVisible(false);
   };
 
   return (
     <View style={styles.container}>
-  
-      <View style={[styles.iconContainer,style ]}>
+      <View style={[styles.iconContainer, style]}>
         <Image source={iconSource} style={styles.icon} />
         <Text style={[styles.iconText, styleText]}>{selectedValue || iconText}</Text>
         <TouchableOpacity onPress={toggleDropdown}>
@@ -42,12 +45,11 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ data = [], iconSource, 
         </TouchableOpacity>
       </View>
 
-      
       {isDropdownVisible && (
         <View style={styles.dropdown}>
           <FlatList
             data={data}
-            keyExtractor={(item) => item.value}
+            keyExtractor={(item) => item.value ?? Math.random().toString()} 
             renderItem={({ item }) => (
               <TouchableOpacity style={styles.dropdownItem} onPress={() => selectItem(item)}>
                 <Text style={styles.itemText}>{item.label}</Text>

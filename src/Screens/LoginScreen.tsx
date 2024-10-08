@@ -1,12 +1,42 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  Alert,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {useEffect} from 'react';
 import Button from '../components/Button';
 import {Icon} from '../components/Icon';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../components/Colors';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '506844250507-71lituq4mkj0p76shf1mmquhdfflplf7.apps.googleusercontent.com',
+    });
+  }, []);
+
+  async function onGoogleButtonPress() {
+    try {
+      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+
+      const {idToken, user} = await GoogleSignin.signIn();
+      console.log(user);
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      return auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      navigation.navigate('Home');
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -21,17 +51,18 @@ const LoginScreen = () => {
           </Text>
         </View>
         <View style={styles.card}>
-          <Text style={styles.title}>
-            -------------------- Registrati
-            ---------------------
-          </Text>
+          <View style={styles.titleContainer}>
+            <View style={styles.line} />
+            <Text style={styles.title1}>Registrati</Text>
+            <View style={styles.line} />
+          </View>
           <View style={{gap: 10}}>
             <Button
               title="Accedi con Google"
               onpress={() => {
-                navigation.navigate('BottomTab');
+                onGoogleButtonPress();
               }}
-              icon={<Icon.AntDesign name="google" size={20} color="yellow" style={styles.icon} />}
+              icon={<Image source={require('../../Asset/Image/google.png')} />}
               buttonStyle={styles.goggleButton}
               titleStyle={{color: 'black'}}
             />
@@ -39,7 +70,14 @@ const LoginScreen = () => {
             <Button
               title="Accedi con Apple"
               onpress={() => {}}
-              icon={<Icon.AntDesign name="apple1" size={20} color="black" style={styles.icon} />}
+              icon={
+                <Icon.AntDesign
+                  name="apple1"
+                  size={20}
+                  color="black"
+                  style={styles.icon}
+                />
+              }
               buttonStyle={styles.goggleButton}
               titleStyle={{color: 'black'}}
             />
@@ -51,7 +89,7 @@ const LoginScreen = () => {
                   name="facebook-with-circle"
                   size={20}
                   color="blue"
-                  style={styles.icon} 
+                  style={styles.icon}
                 />
               }
               buttonStyle={styles.goggleButton}
@@ -60,9 +98,16 @@ const LoginScreen = () => {
             <Button
               title="Accedi Con Mail"
               onpress={() => {}}
-              icon={<Icon.Entypo name="mail" size={20} color="black" style={styles.icon} />}
+              icon={
+                <Icon.Entypo
+                  name="mail"
+                  size={20}
+                  color="black"
+                  style={styles.icon}
+                />
+              }
               buttonStyle={styles.goggleButton}
-              titleStyle={{color: 'black',}}
+              titleStyle={{color: 'black'}}
             />
           </View>
         </View>
@@ -79,17 +124,16 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    
   },
   paraText: {
     color: Colors.color,
     fontSize: 20,
     fontWeight: 'bold',
-   
-    margin :30
+
+    margin: 30,
   },
   card: {
-    backgroundColor:"white",
+    backgroundColor: 'white',
     padding: 20,
     margin: 5,
     borderRadius: 6,
@@ -98,21 +142,35 @@ const styles = StyleSheet.create({
   title: {
     color: 'black',
     marginBottom: 25,
-    fontSize :15,
-    fontWeight :'600'
+    fontSize: 15,
+    fontWeight: '600',
   },
   goggleButton: {
     backgroundColor: Colors.color,
     borderWidth: 1.2,
     padding: 15,
     flexDirection: 'row',
-    justifyContent: 'center',  
-    alignItems: 'center',      
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 15,
     borderRadius: 10,
   },
-  icon:{
-    
-    
-  }
+  icon: {},
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#000',
+  },
+  title1: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingHorizontal: 10,
+    color: Colors.blackColor,
+  },
 });
