@@ -39,6 +39,7 @@ const AddScreens = () => {
                 <Text style={styles.serviceText}>Basic</Text>
                 </View>
                 <Text style={styles.priceText}>130,00€</Text>
+             //remove inline Styling
                 <Text style={{fontSize :12, fontWeight :'400', color :'#1D202B'}}>5 Lavaggi utilizzabili in 3 mesi</Text>
             </View>
 
