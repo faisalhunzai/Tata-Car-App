@@ -1,0 +1,23 @@
+[
+    {
+        "id" :"1",
+      "liters": "145 L",
+      "description": "Litri d’acqua\n risparmiati per \nsingolo lavaggio"
+    },
+    {
+        "id" :"2",
+      "liters": "21 T",
+      "description": "Tonnellate di Co2\n risparniate con il\n servizio domicilio"
+    },
+    {
+        "id" :"3",
+      "liters": "4.340",
+      "description": "Lavaggi effettuati nel\n 2022"
+    },
+    {
+        "id" :"4",
+      "liters": "+830",
+      "description": "Clienti soddisfattie\n affiliati"
+    }
+  ]
+  
